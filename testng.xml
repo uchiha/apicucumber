@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="BDD Test Suite">
+    <test name="Simple test">
+        <!--
+        <packages>
+            <package name="apicucumber"/>
+        </packages>
+        -->
+        
+        <classes>
+            <class name="src/test/java/apicucumber/RunCukesTest"/>
+        </classes>
+        
+        
+    </test>
+</suite>
