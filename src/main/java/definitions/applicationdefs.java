@@ -2,7 +2,12 @@ package definitions;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.json.JSONObject;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -50,9 +55,29 @@ public class applicationdefs {
 	public void the_number_of_restaurants_should_be(int restaurantCount) throws Exception {
 //		System.out.println(">>>" + response.body().jsonPath().getJsonObject("status")); // this works, give out "OK"
 //		System.out.println(">>>" + response.body().jsonPath().getJsonObject("results")); //works, but gives out an array
-		List<Object> samples = response.body().jsonPath().getJsonObject("results");
+//		List<Object> samples = response.body().jsonPath().getJsonObject("results"); // this approach works
+		List<Object> samples = response.body().jsonPath().getList("results"); // this approach works like the previous one
+		
 		assertEquals(samples.size(), restaurantCount);
 	}
+	
+	@Then("^the first restaurant should be \"([^\"]*)\"$")
+	public void the_first_restaurant_should_be(String firstResto) throws Exception {
+		ArrayList<Object> samples = response.body().jsonPath().getJsonObject("results");
+		
+	    /* this thing does not work.. YET!
+//	    JSONObject obj = new JSONObject(samples.get(0));
+//	    String n = obj.getString("reference");
+//	    System.out.println(n);
+ */
+ 
+		for (Object object : samples) {
+			System.out.println(object.toString());
+		}
+
+		
+	}
+
 	
 	// Below is to test for debug only..
 	@Then("^I print out the response$")
