@@ -10,7 +10,7 @@ Feature: Testing out the Google Places API
     When I want to open "https://maps.googleapis.com" endpoint
     And use the "/maps/api/place/textsearch/json" resource
     And trigger the get request
-    Then I print out the response
+    Then the number of restaurants should be 21
     
     #Given test it out
     #And I try to get "json?query=restaurants+in+Sydney&key=AIzaSyBLzFAnW-1XE28hZ2BpJxcpGOquAdBZ8sQ"
